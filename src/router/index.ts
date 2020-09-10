@@ -33,7 +33,9 @@ const routes: Array<RouteConfig> = [
     path: '/Money/EditTag/RemoveTag/:id',
     name: 'RemoveTag',
     component: RemoveTag,
-  }
+  },
+
+
 ]
 
 const router = new VueRouter({
