@@ -20,9 +20,17 @@ window.onload = function () {
   }, 0);
 }
 
-// if (document.documentElement.clientWidth>500){
-//   const QRcode = document.createElement('img')
-// }
+if (document.documentElement.clientWidth>500){
+  window.alert('请使用手机以获得最佳体验')
+  const QRcode = document.createElement('img')
+  QRcode.src = 'https://i.loli.net/2020/09/10/16A2cglSmJYdTXH.png'
+  document.body.appendChild(QRcode)
+  QRcode.style.position='fixed'
+  QRcode.style.left='50%'
+  QRcode.style.top='50%'
+  QRcode.style.transform='translate(-50%,-50%)'
+  QRcode.style.boxShadow='0,0,10px,rgba(0,0,0,0.25)'
+}
 
 
 

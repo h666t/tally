@@ -20,7 +20,7 @@ git commit -m 'deploy'
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 
 # 部署到 github https://<USERNAME>.github.io/<REPO>
- git push -f git@github.com:h666t/tally-PRODUCTION.git master:gh-pages
+git push -f git@github.com:h666t/tally-PRODUCTION.git master:gh-pages
 
 # 部署到码云
 # git push -f git@gitee.com:huang-haotian/tally.git
