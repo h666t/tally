@@ -22,8 +22,8 @@
   export default class Nav extends Vue {
     @Prop({required: true, type: String}) inOutPutType!: string;
 
-    changeInOutPutType(e: any) {
-      const t = e.target.innerText;
+    changeInOutPutType(e: MouseEvent) {
+      const t = (e.target as HTMLDivElement).innerText;
       t === '支出' ? this.$emit('update:changeType', '-') : this.$emit('update:changeType', '+');
     }
   }

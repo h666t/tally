@@ -127,6 +127,11 @@
         this.setEchart()
     }
 
+    @Watch('date')
+    onDateChanged() {
+      this.setEchart()
+    }
+
     mounted() {
       this.setEchart()
     }

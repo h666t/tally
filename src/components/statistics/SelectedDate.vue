@@ -3,15 +3,12 @@
     <span>
       往年数据
     </span>
-
       <ul>
         <li v-for="(item,index) in year" :key="index"
           @click="changeDate"
             :class="{selected: item === parseInt(beSelectedYear)}"
         >{{item}}</li>
       </ul>
-
-
   </div>
 </template>
 
@@ -47,9 +44,9 @@
         return  container
     }
 
-    changeDate(e: any){
-      this.$store.commit('updateStatisticsYear',e.target.innerText)
-      this.beSelectedYear = e.target.innerText
+    changeDate(e: MouseEvent){
+      this.$store.commit('updateStatisticsYear',(e.target as HTMLLIElement).innerText)
+      this.beSelectedYear = (e.target as HTMLLIElement).innerText
     }
 
   }

@@ -9,7 +9,6 @@
       />
     </transition>
 
-
     <div  class="detail">
 
       <Calendar v-if="theBasisOfStatistics === 'year'"
@@ -94,8 +93,8 @@
       }
     }
 
-    changeType(e: any) {
-      if (e.target.innerText === '支出') {
+    changeType(e: MouseEvent) {
+      if ((e.target as HTMLButtonElement).innerText === '支出') {
         this.$emit('update:EchartType', '-');
       } else {
         this.$emit('update:EchartType', '+');

@@ -64,13 +64,14 @@
       }
     }
 
-    fetchDate(e: any) {
-      this.$emit('update:selectedDate', e.target.value);
+    fetchDate(e: InputEvent) {
+      this.$emit('update:selectedDate', (e.target as HTMLInputElement).value);
     }
 
-    clickNumberPad(e: any) {
-      this.$store.commit('inputNumber', e.target.innerText);
-      if (e.target.innerText === 'OK') {
+    clickNumberPad(e: MouseEvent) {
+      console.log(e);
+      this.$store.commit('inputNumber', (e.target as HTMLButtonElement).innerText);
+      if ((e.target as HTMLButtonElement).innerText === 'OK') {
         this.$emit('update:dataReady', true);
       }
     }
@@ -129,6 +130,7 @@
       > input {
         background: white;
         border-color: grey;
+        font-family: $font-hei;
       }
     }
 

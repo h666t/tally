@@ -36,8 +36,8 @@
     @Prop({required: true, type: Array}) selectedList!: string[];
 
 
-    selectTags(e: any) {
-      const item = e.target.innerText;
+    selectTags(e: MouseEvent) {
+      const item = (e.target as HTMLDivElement).innerText;
       const cloneSelectedList = JSON.parse(JSON.stringify(this.selectedList));
       if (cloneSelectedList.indexOf(item) >= 0) {
         const index = cloneSelectedList.indexOf(item);

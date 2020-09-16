@@ -27,7 +27,6 @@
     created() {
       this.$store.commit('initTags');
       this.$store.commit('initFindedTagName');
-
     }
 
     get tagName() {
@@ -37,8 +36,8 @@
 
     newValue = this.tagName;
 
-    getNewValue(e: any) {
-      this.newValue = e.target.value;
+    getNewValue(e: InputEvent) {
+      this.newValue = (e.target as HTMLInputElement).value;
     }
 
     changeTagName() {

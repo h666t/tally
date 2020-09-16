@@ -11,7 +11,8 @@
   <div class="echart1">
     <StatisticsEchart1 :date="dateForCalculate"
                       :type="type"
-                       :theBasisOfStatistics = 'theBasisOfStatistics'/>
+                       :theBasisOfStatistics = 'theBasisOfStatistics'
+    />
   </div>
 </div>
 </template>
@@ -64,7 +65,5 @@
       margin-bottom: 4vh;
       background: #f5f4f9;
     }
-
-
   }
 </style>
