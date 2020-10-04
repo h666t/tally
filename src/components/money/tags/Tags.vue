@@ -77,11 +77,11 @@
 
     > div {
       font-family: Consolas, monospace;
-      line-height: 3;
-      margin-right: 5%;
-      margin-left: 5%;
+      line-height: 2.5;
+      margin-right: 3%;
+      margin-left: 3%;
       margin-bottom: 15px;
-      width: 15%;
+      width: 19%;
       display: flex;
       justify-content: center;
       align-items: center;
