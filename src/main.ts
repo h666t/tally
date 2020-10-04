@@ -23,7 +23,7 @@ window.onload = function () {
 if (document.documentElement.clientWidth>500){
   window.alert('请使用手机以获得最佳体验')
   const QRcode = document.createElement('img')
-  QRcode.src = 'https://i.loli.net/2020/09/16/5t6KkzY8GBdx1pn.png'
+  QRcode.src = 'https://i.loli.net/2020/10/04/8EGX5gF73VxBU9y.png'
   document.body.appendChild(QRcode)
   QRcode.style.position='fixed'
   QRcode.style.left='50%'

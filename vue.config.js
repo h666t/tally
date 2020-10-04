@@ -2,14 +2,9 @@
 const path = require('path')
 
 module.exports = {
-  //github
   publicPath: process.env.NODE_ENV === 'production'
-    ? '/tally-PRODUCTION/'
+    ? '/tally-vue/'
     : '/',
-  //码云
-  // publicPath: process.env.NODE_ENV === 'production'
-  //   ? '/tally/'
-  //   : '/',
   lintOnSave: false,
   chainWebpack: config => {
     const dir = path.resolve(__dirname, 'src/assets/icon');
