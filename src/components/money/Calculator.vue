@@ -52,8 +52,6 @@
       return this.$store.state.moduleCalculator.forCalculationValue;
     }
 
-
-
     get value() {
       const now = dayjs(new Date()).format('YYYY-MM-DD').toString();
       if (this.selectedDate === '') {
@@ -69,7 +67,6 @@
     }
 
     clickNumberPad(e: MouseEvent) {
-      console.log(e);
       this.$store.commit('inputNumber', (e.target as HTMLButtonElement).innerText);
       if ((e.target as HTMLButtonElement).innerText === 'OK') {
         this.$emit('update:dataReady', true);

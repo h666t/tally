@@ -24,6 +24,7 @@
   import Nav from '@/components/money/Nav.vue';
   import Tags from '@/components/money/tags/Tags.vue';
   import Calculator from '@/components/money/Calculator.vue';
+  import dayjs from 'dayjs';
   @Component({
     components: {Tags, Nav, Calculator}
   }) export default class Money extends Vue {
@@ -60,6 +61,7 @@
           });
         this.selectedList = []
         this.notes = ''
+        this.selectedDate=`${dayjs().format('YYYY-MM-DD')}`
         this.$store.commit('initAmount')
       }
       this.isDataReady = false;
