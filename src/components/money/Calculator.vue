@@ -103,7 +103,7 @@
       padding: 0 20px;
 
       > .notes-input {
-        border: 0;
+        border: none;
         outline: none;
       }
     }
@@ -116,7 +116,7 @@
       font-size: 36px;
       padding: 0 10px;
       font-family: Consolas, monospace;
-      box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.25);
+      border-top: 1px solid rgba(0,0,0,0.25);
     }
 
     > .date {
@@ -124,13 +124,12 @@
       justify-content: start;
       height: 4vh;
       background: white;
-
       padding: 2px 10px;
 
       > input {
         background: white;
-        border-color: grey;
         font-family: $font-hei;
+        border: 1px solid rgba(0,0,0,0.5);
       }
     }
 
