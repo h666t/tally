@@ -10,6 +10,7 @@
   import echarts from 'echarts';
   import mapMonthOrYear from '@/lib/mapMonthOrYear';
   import fetchSpecialTimeAmount from '@/lib/fetchSpecialTimeAmount';
+  import dayjs from 'dayjs';
 
   @Component export default class StatisticsEchart extends Vue {
     @Prop({required: true, type: String}) date!: string; //month
@@ -53,12 +54,29 @@
       return this.YData.sort((a,b)=>{return  b-a})[0]
     }
 
-    get echartTitle() {
-      if (this.type === '-') {
-        return '支出'
-      } else {
-        return '收入'
+    @Watch('type')
+    onTypeChanged() {
+      this.setEchart()
+    }
+
+    @Watch('date')
+    onDateChanged() {
+      this.setEchart()
+    }
+
+    echartShowHashTable = {
+      year:{
+        '-':`${this.date}年支出`,
+        '+':`${this.date}年收入`
+      },
+      month: {
+        '-':`${dayjs().format('YYYY年MM月')}支出`,
+        '+':`${dayjs().format('YYYY年MM月')}收入`
       }
+    }
+
+    get echartTitle() {
+      return this.echartShowHashTable[this.theBasisOfStatistics][this.type]
     }
 
     get myChart() {
@@ -87,7 +105,6 @@
           max: this.maxYNumber,
           min: 0,
         },
-
         series: [{
           data: this.YData,
           type: 'line',
@@ -117,15 +134,7 @@
       })
     }
 
-    @Watch('type')
-    onTypeChanged() {
-        this.setEchart()
-    }
 
-    @Watch('date')
-    onDateChanged() {
-      this.setEchart()
-    }
 
     mounted() {
       this.setEchart()

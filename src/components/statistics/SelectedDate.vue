@@ -68,6 +68,7 @@
      flex-wrap: wrap;
      > li{
        width: 80px;
+       height: 25px;
        margin: 10px;
        display: flex;
        align-items: center;
