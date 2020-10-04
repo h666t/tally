@@ -1,5 +1,4 @@
 import idCreator from '@/lib/idCreator';
-import store from '@/store/index';
 
 const moduleTags = {
   state: () => ({
@@ -44,18 +43,22 @@ const moduleTags = {
       const oldValue = state.findedTagName;
       if (newValue === '') {
         window.alert('标签名不能为空');
+        return
       }
-      state.tagList.map(item => {
-        if (newValue === item.tagName) {
-          window.alert('标签已存在');
-          return;
-        } else {
-          if (item.id.toString() === id) {
-            item.tagName = newValue;
-          }
+      const nameContainer: string[] = []
+      state.tagList.forEach(item=>{
+        nameContainer.push(item.tagName)
+      })
+      if (nameContainer.indexOf(newValue) >= 0 && newValue !== oldValue){
+       window.alert('标签已存在')
+        return;
+      }
+      state.tagList.forEach(item=>{
+        if ( JSON.stringify(item.id) === id ){
+          item.tagName = newValue
+          window.localStorage.setItem('tagList', JSON.stringify(state.tagList));
         }
-        window.localStorage.setItem('tagList', JSON.stringify(state.tagList));
-      });
+      })
     },
     removeTag(state: TagListState, payload: string) {
       for (let i = 0; i < state.tagList.length; i++) {
@@ -66,10 +69,6 @@ const moduleTags = {
       window.localStorage.setItem('tagList', JSON.stringify(state.tagList));
     }
   },
-  // actions: {
-  //   }
-
-
 };
 
 export default moduleTags;
