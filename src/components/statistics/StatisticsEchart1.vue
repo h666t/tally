@@ -76,7 +76,7 @@
     }
 
     get echartTitle() {
-      return this.echartShowHashTable[this.theBasisOfStatistics][this.type]
+      return this.echartShowHashTable[this.theBasisOfStatistics as 'month'|'year'][this.type as '+'|'-']
     }
 
     get myChart() {
