@@ -3,12 +3,12 @@
     <TopNav path="/Money" title="标签详情"/>
     <div class="tags-wrapper">
       <ul>
-        <li v-for="item in tagList" :key="item.id">
+        <router-link v-for="item in tagList" :key="item.id" :to='`/Money/EditTag/RemoveTag/${item.id}`'>
+        <li >
           {{item.tagName}}
-          <router-link :to='`/Money/EditTag/RemoveTag/${item.id}`'>
             <Icon name="#right"/>
-          </router-link>
         </li>
+        </router-link>
       </ul>
     </div>
 
