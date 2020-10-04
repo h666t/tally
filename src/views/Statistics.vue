@@ -54,16 +54,17 @@
 <style lang="scss" scoped>
 
   .statistics-container {
-    background: white;
+    background: #f5f4f9;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+
     > .echart1{
       display: flex;
       justify-content: center;
       align-items: center;
       margin-bottom: 4vh;
-      background: #f5f4f9;
+      background: white;
     }
   }
 </style>

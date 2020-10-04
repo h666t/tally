@@ -56,9 +56,11 @@
 <style lang="scss" scoped>
 
   .container {
+    background: #f5f4f9;
     display: flex;
     flex-direction: column;
     position: relative;
+    height: 100vh;
 
     > .tags-wrapper {
       overflow: auto;
@@ -66,10 +68,9 @@
     }
   }
 
-
   li {
     line-height: 2.5;
-    background: #f5f4f9;
+    background: white;
     border-bottom: 1px solid rgb(0, 0, 0, 0.25);
     padding: 2px 20px;
     display: flex;
@@ -81,7 +82,8 @@
   button {
     outline: none;
     border: none;
-    background:  darken(#f5f4f9, 3%);
+    background:  #f60;
+    color:white;
     padding: 5px;
     border-radius: 8px;
     width: 80px;

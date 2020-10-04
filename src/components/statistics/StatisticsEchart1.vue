@@ -11,7 +11,6 @@
   import mapMonthOrYear from '@/lib/mapMonthOrYear';
   import fetchSpecialTimeAmount from '@/lib/fetchSpecialTimeAmount';
 
-
   @Component export default class StatisticsEchart extends Vue {
     @Prop({required: true, type: String}) date!: string; //month
     @Prop({required: true, type: String}) type!: string;
@@ -39,8 +38,6 @@
       this.setEchart()
     }
 
-
-
     get YData() {
       const y: number[] = [];
       mapMonthOrYear(this.theBasisOfStatistics, this.date, (i: number) => {
@@ -56,7 +53,6 @@
       return this.YData.sort((a,b)=>{return  b-a})[0]
     }
 
-
     get echartTitle() {
       if (this.type === '-') {
         return '支出'
@@ -71,7 +67,7 @@
 
     setEchart() {
       this.myChart.setOption({
-        backgroundColor:'#f5f4f9',
+        backgroundColor:'white',
         title:{
           text:this.echartTitle
         },
@@ -121,7 +117,6 @@
       })
     }
 
-
     @Watch('type')
     onTypeChanged() {
         this.setEchart()
@@ -141,7 +136,7 @@
 <style lang="scss" scoped>
 .echart1-container{
   padding: 10px;
-  background: #f5f4f9;
+  background: white;
 }
 
   #main {

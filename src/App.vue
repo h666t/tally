@@ -14,5 +14,8 @@
 
 <style lang="scss">
   @import "~@/assets/helper.scss";
+  body{
+    background: #f5f4f9;
+  }
 
 </style>

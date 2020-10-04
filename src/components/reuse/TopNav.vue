@@ -29,5 +29,6 @@
     padding: 12px 20px;
     align-items: center;
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+    background: #EBEFF2;
   }
 </style>

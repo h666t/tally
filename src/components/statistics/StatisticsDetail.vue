@@ -108,14 +108,14 @@
   @import "~@/assets/helper.scss";
 
   .statistics-container {
-    background: #F5F4F9;
+    background: white;
   }
 
   .detail {
     display: flex;
     flex-direction: column;
     margin-top: 30px;
-    background: #f5f4f9;
+    background: white;
     padding-left: 20px;
     padding-top: 25px;
     padding-bottom: 25px;
@@ -169,7 +169,7 @@
       height: 30px;
       border: none;
       outline: none;
-      background: #0F9570;
+      background: #f60;
       border-radius: 15px;
       color: white;
       display: flex;
@@ -187,16 +187,16 @@
       margin-right: 20px;
       outline: none;
       border: none;
-      color: #0F9570;
+      color: #f60;
       display: flex;
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      background: white;
+      background: #f5f4f9;
       margin-bottom: 20px;
     }
     .icon{
-      fill:#0F9570
+      fill:#f60
     }
   }
 

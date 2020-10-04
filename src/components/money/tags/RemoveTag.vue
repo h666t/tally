@@ -55,12 +55,14 @@
 
 <style lang="scss" scoped>
   .container {
+    background: #f5f4f9;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
 
     > .input-container {
-      background: #f5f4f9;
+      background: white;
       width: 100vw;
       display: flex;
       justify-content: center;
@@ -75,7 +77,7 @@
 
         > input {
           width: 70vw;
-          background: #f5f4f9;
+          background: white;
           outline: none;
           border: none;
         }
@@ -93,7 +95,8 @@
         margin: 10px;
         outline: none;
         border: none;
-        background: darken(#f5f4f9, 3%);
+        background: #f60;
+        color:white;
         padding: 5px;
         border-radius: 8px;
         width: 80px;

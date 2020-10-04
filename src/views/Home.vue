@@ -46,7 +46,7 @@
     height: 43px;
     width: 123px;
     border-radius: 20px;
-    background: #0F9570;
+    background: #f60;
     position: absolute;
     right: 20px;
     color: white;
