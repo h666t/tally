@@ -8,7 +8,12 @@
   import Vue from  'vue'
   import {Component} from 'vue-property-decorator'
   @Component export default class App extends Vue{
-
+    defaultTagNames = ['衣','食','住','行']
+    created(){
+      if (this.$store.state.moduleTags.tagList.length === 0){
+        this.defaultTagNames.forEach(item=>this.$store.commit('createNewTag',item))
+      }
+    }
   }
 </script>
 

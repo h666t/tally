@@ -11,7 +11,6 @@ const moduleTags = {
     },
     createNewTag(state: TagListState, payload: string) {
       const exitedTagName = state.tagList.map(item => item.tagName);
-      console.log(exitedTagName);
       if (payload === '') {
         window.alert('标签名不能为空');
         return;
