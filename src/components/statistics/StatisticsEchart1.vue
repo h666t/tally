@@ -66,8 +66,8 @@
 
     echartShowHashTable = {
       year:{
-        '-':`${this.date}年支出`,
-        '+':`${this.date}年收入`
+        '-':`${this.date.substring(0,4)}年支出`,
+        '+':`${this.date.substring(0,4)}年收入`
       },
       month: {
         '-':`${dayjs().format('YYYY年MM月')}支出`,
