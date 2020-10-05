@@ -1,6 +1,6 @@
-const fetchSpecialDateData = (dataSource: DataSourceItem[], specialTime: string,monthOrDay: string) => {
+const fetchSpecialDateData = (dataSource: DataSourceItem[], specialTime: string,dayOrOthers: string) => {
   const container: DataSourceItem[] = [];
-  if (monthOrDay === 'day'){
+  if (dayOrOthers === 'day'){
     dataSource.map((item: DataSourceItem) => {
       if (item.date === specialTime) {
         container.push(item);

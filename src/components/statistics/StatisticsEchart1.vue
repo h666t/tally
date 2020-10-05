@@ -8,62 +8,13 @@
   import Vue from 'vue';
   import {Component, Prop, Watch} from 'vue-property-decorator';
   import echarts from 'echarts';
-  import mapMonthOrYear from '@/lib/mapMonthOrYear';
-  import fetchSpecialTimeAmount from '@/lib/fetchSpecialTimeAmount';
   import dayjs from 'dayjs';
+  import fetchEchartDate from '@/lib/fetchEchartDate';
 
   @Component export default class StatisticsEchart extends Vue {
     @Prop({required: true, type: String}) date!: string; //month
     @Prop({required: true, type: String}) type!: string;
     @Prop({required:true,type:String}) theBasisOfStatistics!: string
-
-    created() {
-      this.$store.commit('initDataSource');
-    }
-
-    fetchXData(date: string) {
-      const x: string[] = [];
-      mapMonthOrYear(date, this.date, (i: number) => {x.push(i.toString());});
-      return x;
-    }
-
-    XData = this.fetchXData(this.theBasisOfStatistics)
-
-    get dataSource() {
-      return this.$store.state.moduleDataSource.data;
-    }
-
-    @Watch('theBasisOfStatistics')
-      onTheBasisOfStatisticsChanged(){
-      this.XData = this.fetchXData(this.theBasisOfStatistics)
-      this.setEchart()
-    }
-
-    get YData() {
-      const y: number[] = [];
-      mapMonthOrYear(this.theBasisOfStatistics, this.date, (i: number) => {
-        let monthOrDay = i.toString();
-        monthOrDay.length === 1 ? monthOrDay = `0${i}` : monthOrDay;
-        const amount = fetchSpecialTimeAmount(this.type, `${this.date}-${monthOrDay}`, this.dataSource);
-        y.push(parseFloat(amount));
-      });
-      return y;
-    }
-
-    get maxYNumber(){
-      return this.YData.sort((a,b)=>{return  b-a})[0]
-    }
-
-    @Watch('type')
-    onTypeChanged() {
-      this.setEchart()
-    }
-
-    @Watch('date')
-    onDateChanged() {
-      this.setEchart()
-    }
-
     echartShowHashTable = {
       year:{
         '-':`${this.date.substring(0,4)}年支出`,
@@ -74,9 +25,54 @@
         '+':`${dayjs().format('YYYY年MM月')}收入`
       }
     }
+    created() {
+      this.$store.commit('initDataSource');
+    }
+    echartTitle = this.echartShowHashTable[this.theBasisOfStatistics as 'month'|'year'][this.type as '+'|'-']
+    XData = fetchEchartDate().fetchXData(this.theBasisOfStatistics,this.date)
+    YData = fetchEchartDate().fetchYData(this.theBasisOfStatistics,this.type,this.$store.state.moduleDataSource.data,this.date.substring(0,4))
 
-    get echartTitle() {
-      return this.echartShowHashTable[this.theBasisOfStatistics as 'month'|'year'][this.type as '+'|'-']
+     updateYData(){
+       this.YData = fetchEchartDate().fetchYData(this.theBasisOfStatistics,this.type,this.$store.state.moduleDataSource.data,this.date.substring(0,4))
+    }
+
+    updateXData(){
+      this.XData = fetchEchartDate().fetchXData(this.theBasisOfStatistics,this.date)
+    }
+
+    updateEchartTitle(){
+      this.echartTitle = this.echartShowHashTable[this.theBasisOfStatistics as 'month'|'year'][this.type as '+'|'-']
+    }
+
+    get dataSource() {
+      return this.$store.state.moduleDataSource.data;
+    }
+
+    @Watch('theBasisOfStatistics')
+      onTheBasisOfStatisticsChanged(){
+      this.updateXData()
+      this.updateYData()
+      this.updateEchartTitle()
+      this.setEchart()
+    }
+
+    @Watch('type')
+    onTypeChanged() {
+      this.updateYData()
+      this.updateEchartTitle()
+      this.setEchart()
+    }
+
+    @Watch('date')
+    onDateChanged() {
+      this.updateYData()
+      this.updateEchartTitle()
+      this.setEchart()
+    }
+
+    get maxYNumber(){
+      const cloneYData = JSON.parse(JSON.stringify(this.YData))
+      return cloneYData.sort((a: number,b: number)=>{return  b-a})[0]
     }
 
     get myChart() {
@@ -91,7 +87,7 @@
         },
         tooltip:{
           show:true,
-          formatter: '{b0}号: {c0}元'
+          formatter: `${this.theBasisOfStatistics === 'month' ? "{b0}号: {c0}元" : "{b0}月: {c0}元"}`
         },
         xAxis: {
           type: 'category',
@@ -133,8 +129,6 @@
         }],
       })
     }
-
-
 
     mounted() {
       this.setEchart()
