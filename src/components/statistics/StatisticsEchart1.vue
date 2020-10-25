@@ -128,6 +128,9 @@
   padding: 10px;
   background: white;
   overflow: auto;
+  &::-webkit-scrollbar{
+    display: none;
+  }
 }
 
   #main {
