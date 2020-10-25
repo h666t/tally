@@ -28,6 +28,7 @@
     created() {
       this.$store.commit('initDataSource');
     }
+
     echartTitle = this.echartShowHashTable[this.theBasisOfStatistics as 'month'|'year'][this.type as '+'|'-']
     XData = fetchEchartDate().fetchXData(this.theBasisOfStatistics,this.date)
     YData = fetchEchartDate().fetchYData(this.theBasisOfStatistics,this.type,this.$store.state.moduleDataSource.data,this.date.substring(0,4))
@@ -111,25 +112,11 @@
           },
         }],
         grid: [{
-          left: '13%',
-          bottom: '18%',
-          top: '20%',
-          right: '0%'
-        }],
-        dataZoom: [{
-          type: 'slider',
-          show: true,
-          xAxisIndex: [0],
-          left: '15%',
-          bottom: 5,
-          start: 0,
-          end: 90 ,
-          minSpan:35,
-          maxSpan:35,
+          left: '50',
+          right: 0
         }],
       })
     }
-
     mounted() {
       this.setEchart()
     }
@@ -140,10 +127,11 @@
 .echart1-container{
   padding: 10px;
   background: white;
+  overflow: auto;
 }
 
   #main {
-    height: 350px;
-    width: 350px;
+    height: 300px;
+    width: 500px;
   }
 </style>
